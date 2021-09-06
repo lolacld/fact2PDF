@@ -5,16 +5,12 @@ class Client {
         // Connection
         private $conn;
 
-        // Table
-        private $db_table = "client";
-
         // Columns
         public $id;
-        public $name;
+        public $nom;
         public $email;
-        public $age;
-        public $designation;
-        public $created;
+        public $telephone;
+        public $adresse;
 
         // Db connection
         public function __construct($db){
@@ -23,7 +19,7 @@ class Client {
 
         // GET ALL
         public function getAllClients(){
-            $sqlQuery = "SELECT id, name, email, age, designation, created FROM " . $this->db_table . "";
+            $sqlQuery = "SELECT id, nom, email, telephone, adresse, FROM client";
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
             return $stmt;
@@ -32,29 +28,28 @@ class Client {
         // CREATE
         public function createClient(){
             $sqlQuery = "INSERT INTO
-                        cllient
+                        client
                     SET
-                        name = :name, 
+                        nom = :nom, 
                         email = :email, 
-                        age = :age, 
-                        designation = :designation, 
-                        created = :created";
+                        telephone = :telephone,  
+                        adresse = :adresse";
         
             $stmt = $this->conn->prepare($sqlQuery);
         
             // sanitize
-            $this->name=htmlspecialchars(strip_tags($this->name));
+            $this->nom=htmlspecialchars(strip_tags($this->nom));
             $this->email=htmlspecialchars(strip_tags($this->email));
-            $this->age=htmlspecialchars(strip_tags($this->age));
-            $this->designation=htmlspecialchars(strip_tags($this->designation));
-            $this->created=htmlspecialchars(strip_tags($this->created));
+            $this->telephone=htmlspecialchars(strip_tags($this->telephone));
+            $this->adress=htmlspecialchars(strip_tags($this->adresse));
+            
         
             // bind data
-            $stmt->bindParam(":name", $this->name);
+            $stmt->bindParam(":nom", $this->nom);
             $stmt->bindParam(":email", $this->email);
-            $stmt->bindParam(":age", $this->age);
-            $stmt->bindParam(":designation", $this->designation);
-            $stmt->bindParam(":created", $this->created);
+            $stmt->bindParam(":telephone", $this->telephone);
+            $stmt->bindParam(":adresse", $this->adresse);
+           
         
             if($stmt->execute()){
                return true;
@@ -66,13 +61,12 @@ class Client {
         public function getSingleClient(){
             $sqlQuery = "SELECT
                         id, 
-                        name, 
+                        nom, 
                         email, 
-                        age, 
-                        designation, 
-                        created
+                        telephone, 
+                        adresse, 
                       FROM
-                        ". $this->db_table ."
+                        client
                     WHERE 
                        id = ?
                     LIMIT 0,1";
@@ -85,16 +79,15 @@ class Client {
 
             $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
             
-            $this->name = $dataRow['name'];
+            $this->name = $dataRow['nom'];
             $this->email = $dataRow['email'];
-            $this->age = $dataRow['age'];
-            $this->designation = $dataRow['designation'];
-            $this->created = $dataRow['created'];
+            $this->age = $dataRow['telephone'];
+            $this->designation = $dataRow['adresse'];
         }        
 
         // DELETE
         function deleteClient(){
-            $sqlQuery = "DELETE FROM " . $this->db_table . " WHERE id = ?";
+            $sqlQuery = "DELETE FROM client WHERE id = ?";
             $stmt = $this->conn->prepare($sqlQuery);
         
             $this->id=htmlspecialchars(strip_tags($this->id));

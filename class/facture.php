@@ -19,12 +19,12 @@ class Facture {
         private $db_table = "factures";
 
         // Columns
-        public $id;
-        public $name;
-        public $email;
-        public $age;
-        public $designation;
-        public $created;
+        public $ID;
+        public $montant;
+        public $description;
+        public $tva;
+        public $quantite;
+        public $ID_produit;
 
         // Db connection
         public function __construct($db){
@@ -44,27 +44,27 @@ class Facture {
             $sqlQuery = "INSERT INTO
                         factures
                     SET
-                        name = :name, 
-                        email = :email, 
-                        age = :age, 
-                        designation = :designation, 
-                        created = :created";
+                        montant = :montant, 
+                        description = :description, 
+                        tva = :tva, 
+                        quantite = :quantite, 
+                        id_produit = :id_produit";
         
             $stmt = $this->conn->prepare($sqlQuery);
         
             // sanitize
-            $this->name=htmlspecialchars(strip_tags($this->name));
-            $this->email=htmlspecialchars(strip_tags($this->email));
-            $this->age=htmlspecialchars(strip_tags($this->age));
-            $this->designation=htmlspecialchars(strip_tags($this->designation));
-            $this->created=htmlspecialchars(strip_tags($this->created));
+            $this->montant=htmlspecialchars(strip_tags($this->montant));
+            $this->description=htmlspecialchars(strip_tags($this->description));
+            $this->tva=htmlspecialchars(strip_tags($this->tva));
+            $this->quantite=htmlspecialchars(strip_tags($this->quantite));
+            $this->ID_produit=htmlspecialchars(strip_tags($this->ID_produit));
         
             // bind data
-            $stmt->bindParam(":name", $this->name);
-            $stmt->bindParam(":email", $this->email);
-            $stmt->bindParam(":age", $this->age);
-            $stmt->bindParam(":designation", $this->designation);
-            $stmt->bindParam(":created", $this->created);
+            $stmt->bindParam(":montant", $this->montant);
+            $stmt->bindParam(":description", $this->description);
+            $stmt->bindParam(":tva", $this->tva);
+            $stmt->bindParam(":quantite", $this->quantite);
+            $stmt->bindParam(":id_produit", $this->id_produit);
         
             if($stmt->execute()){
                return true;
@@ -76,11 +76,11 @@ class Facture {
         public function getSingleFacture(){
             $sqlQuery = "SELECT
                         id, 
-                        name, 
-                        email, 
-                        age, 
-                        designation, 
-                        created
+                        montant, 
+                        description, 
+                        tva, 
+                        quantite, 
+                        id_^produit
                       FROM
                         ". $this->db_table ."
                     WHERE 
@@ -95,42 +95,42 @@ class Facture {
 
             $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
             
-            $this->name = $dataRow['name'];
-            $this->email = $dataRow['email'];
-            $this->age = $dataRow['age'];
-            $this->designation = $dataRow['designation'];
-            $this->created = $dataRow['created'];
+            $this->montant = $dataRow['montant'];
+            $this->description = $dataRow['description'];
+            $this->tva = $dataRow['tva'];
+            $this->quantite = $dataRow['quantite'];
+            $this->ID_produit = $dataRow['id_produit'];
         }        
 
-        // UPDATE
+        // UPDATE facture
         public function updateFacture(){
             $sqlQuery = "UPDATE
                         ". $this->db_table ."
                     SET
-                        name = :name, 
-                        email = :email, 
-                        age = :age, 
-                        designation = :designation, 
-                        created = :created
+                        montant = :montant, 
+                        description = :description, 
+                        tva = :tva, 
+                        quantite = :quantite, 
+                        Id_produit = :Id_produit,
                     WHERE 
                         id = :id";
         
             $stmt = $this->conn->prepare($sqlQuery);
         
-            $this->name=htmlspecialchars(strip_tags($this->name));
-            $this->email=htmlspecialchars(strip_tags($this->email));
-            $this->age=htmlspecialchars(strip_tags($this->age));
-            $this->designation=htmlspecialchars(strip_tags($this->designation));
-            $this->created=htmlspecialchars(strip_tags($this->created));
-            $this->id=htmlspecialchars(strip_tags($this->id));
+            $this->Id=htmlspecialchars(strip_tags($this->Id));
+            $this->montant=htmlspecialchars(strip_tags($this->montant));
+            $this->description=htmlspecialchars(strip_tags($this->description));
+            $this->tva=htmlspecialchars(strip_tags($this->tva));
+            $this->quantite=htmlspecialchars(strip_tags($this->quantite));
+            $this->ID_produit=htmlspecialchars(strip_tags($this->ID_produit));
         
             // bind data
-            $stmt->bindParam(":name", $this->name);
-            $stmt->bindParam(":email", $this->email);
-            $stmt->bindParam(":age", $this->age);
-            $stmt->bindParam(":designation", $this->designation);
-            $stmt->bindParam(":created", $this->created);
-            $stmt->bindParam(":id", $this->id);
+            $stmt->bindParam(":montant", $this->montant);
+            $stmt->bindParam(":description", $this->description);
+            $stmt->bindParam(":tva", $this->tva);
+            $stmt->bindParam(":quantite", $this->quantite);
+            $stmt->bindParam(":Id_produit", $this->ID_produit);
+            $stmt->bindParam(":Id", $this->id);
         
             if($stmt->execute()){
                return true;
