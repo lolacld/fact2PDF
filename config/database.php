@@ -14,27 +14,24 @@ Databaseclasse.
 class Database{
 
     // Propriétés de la base de données
-    private $dsn = 'mysql:host=fac2PDF;dbname=fac2pdf;charset=utf8'; // vhost
+    private $host = "localhost";
+    private $database_name = "fac2pdf";
     private $username = "root";
     private $password = "";
-    private $db_name = "fac2pdf";
 
+    public $conn;
+
+    public function getConnexion(){
     // On commence par fermer la connexion si elle existait
-   protected $connexion = null;
-
-    // getter pour la connexion
-    public function _construct() {
-        // On essaie de se connecter
-        try{
-            $this->connexion = new PDO("mysql:host=" . $this->dsn . ";dbname=" . $this->db_name, $this->username, $this->password);
-            $this->connexion->exec("set names utf8"); // On force les transactions en UTF-8
-        }
-        catch(PDOException $exception)
-        { // On gère les erreurs éventuelles
-            throw new Exception($exception->getMessage());
-        }
-        // On retourne la connexion
-        return $this->connexion;
+   $this->conn = null;
+    try 
+    {
+        $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->database_name, $this->username, $this->password);
+        $this->conn->exec("set names utf8"); // On force les transactions en UTF-8
+    } catch(PDOException $exception){
+        echo "Pas de connexion possible: " . $exception->getMessage();
     }
+    return $this->conn;
 }
+}  
  ?>

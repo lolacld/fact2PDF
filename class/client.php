@@ -19,7 +19,7 @@ class Client {
 
         // GET ALL
         public function getAllClients(){
-            $sqlQuery = "SELECT id, nom, email, telephone, adresse, FROM client";
+            $sqlQuery = "SELECT * FROM client";
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
             return $stmt;

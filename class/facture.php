@@ -44,6 +44,7 @@ class Facture {
             $sqlQuery = "INSERT INTO
                         factures
                     SET
+                        id = :id,
                         montant = :montant, 
                         description = :description, 
                         tva = :tva, 
@@ -53,13 +54,15 @@ class Facture {
             $stmt = $this->conn->prepare($sqlQuery);
         
             // sanitize
-            $this->montant=htmlspecialchars(strip_tags($this->montant));
-            $this->description=htmlspecialchars(strip_tags($this->description));
-            $this->tva=htmlspecialchars(strip_tags($this->tva));
-            $this->quantite=htmlspecialchars(strip_tags($this->quantite));
-            $this->ID_produit=htmlspecialchars(strip_tags($this->ID_produit));
+            $this->ID = htmlspecialchars(strip_tags($this->ID));
+            $this->montant = htmlspecialchars(strip_tags($this->montant));
+            $this->description = htmlspecialchars(strip_tags($this->description));
+            $this->tva = htmlspecialchars(strip_tags($this->tva));
+            $this->quantite = htmlspecialchars(strip_tags($this->quantite));
+            $this->ID_produit = htmlspecialchars(strip_tags($this->ID_produit));
         
             // bind data
+            $stmt->bindParam(":montant", $this->ID);
             $stmt->bindParam(":montant", $this->montant);
             $stmt->bindParam(":description", $this->description);
             $stmt->bindParam(":tva", $this->tva);
@@ -80,7 +83,7 @@ class Facture {
                         description, 
                         tva, 
                         quantite, 
-                        id_^produit
+                        id_produit
                       FROM
                         ". $this->db_table ."
                     WHERE 
@@ -95,6 +98,7 @@ class Facture {
 
             $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
             
+            $this->ID = $dataRow['ID'];
             $this->montant = $dataRow['montant'];
             $this->description = $dataRow['description'];
             $this->tva = $dataRow['tva'];
@@ -107,6 +111,7 @@ class Facture {
             $sqlQuery = "UPDATE
                         ". $this->db_table ."
                     SET
+                        ID = :ID,
                         montant = :montant, 
                         description = :description, 
                         tva = :tva, 
@@ -125,12 +130,12 @@ class Facture {
             $this->ID_produit=htmlspecialchars(strip_tags($this->ID_produit));
         
             // bind data
+            $stmt->bindParam(":ID", $this->ID);
             $stmt->bindParam(":montant", $this->montant);
             $stmt->bindParam(":description", $this->description);
             $stmt->bindParam(":tva", $this->tva);
             $stmt->bindParam(":quantite", $this->quantite);
             $stmt->bindParam(":Id_produit", $this->ID_produit);
-            $stmt->bindParam(":Id", $this->id);
         
             if($stmt->execute()){
                return true;
@@ -143,7 +148,7 @@ class Facture {
             $sqlQuery = "DELETE FROM " . $this->db_table . " WHERE id = ?";
             $stmt = $this->conn->prepare($sqlQuery);
         
-            $this->id=htmlspecialchars(strip_tags($this->id));
+            $this->ID=htmlspecialchars(strip_tags($this->ID));
         
             $stmt->bindParam(1, $this->id);
         
@@ -155,4 +160,3 @@ class Facture {
 
     }
 ?>
-}
