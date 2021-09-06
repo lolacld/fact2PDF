@@ -5,27 +5,27 @@
     // header("Access-Control-Max-Age: 3600");
     // header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-    include_once '../config/database.php';
-    include_once '../class/facture.php';
+    include_once('/wamp64/www/fac2PDF/fact2PDF/class/facture.php');
+    include_once('/wamp64/www/fac2PDF/fact2PDF/config/database.php');
 
-    
+    // Instanciation de notre classe Database pour la connexion et nos requetes
     $database = new Database();
     $db = $database->getConnexion();
 
     $data = json_decode(file_get_contents("php://input"));
 
-// creation 
-    $fac = new Facture($db);
+    // Instanciation Class facture pour manipuler notre objet Facture 
+    $Fac = new Facture($db);
 
-    // on initianilise les variables
-    $fac->id = $data->id;
-    $fac->montant = $data->montant;
-    $fac->description = $data->description;
-    $fac->tva = $data->tva;
-    $fac->quantite = $data->quantite;
-    $fac->Id_produit = $data->ID_produit;
+    // on initialiise les variables
+    $Fac->id = $data->id;
+    $Fac->montant = $data->montant;
+    $Fac->description = $data->description;
+    $Fac->tva = $data->tva;
+    $Fac->quantite = $data->quantite;
+    $Fac->Id_produit = $data->ID_produit;
     
-    if($fac->createFacture()){
+    if($Fac->createFacture()){
         echo 'Facture créé avec succès.';
     } else{
         echo 'Probleme creation facture.';

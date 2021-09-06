@@ -20,24 +20,24 @@
 
     if($itemCount > 0){
         
-        $clientArr = array();
-        $clientArr["body"] = array();
-        $clientArr["itemCount"] = $itemCount;
+        $facArr = array();
+        $facArr["body"] = array();
+        $facArr["itemCount"] = $itemCount;
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
             $e = array(
-                "id" => $id,
+               // "id" => $id,
                 "montant" => $montant,
                 "description" => $description,
-                "tva" => $tva,
+               // "tva" => $tva,
                 "quantite" => $quantite,
-                "id_produit" => $id_produit
+                "created" => $created
             );
 
-            array_push($clientArr["body"], $e);
+            array_push($facArr["body"], $e);
         }
-        echo json_encode($clientArr);
+        echo json_encode($facArr);
     } else{
         http_response_code(404);
         echo json_encode(
