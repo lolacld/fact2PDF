@@ -62,12 +62,12 @@ input[type=submit]:hover {
                 <h1>Connexion</h1>
         
                 <label><b>Nom d'utilisateur</b></label>
-                <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
+                <input type="text" placeholder="Entrer le nom d'utilisateur" name="user_name" required>
 
                 <label><b>Mot de passe</b></label>
-                <input type="password" placeholder="Entrer le mot de passe" name="password" required>
+                <input type="mdp" placeholder="Entrer le mot de passe" name="mdp" required>
 
-                <input type="submit" id='submit' value='LOGIN' >
+                <input type="submit" id='submit' value='Se connecter' >
 
                 <?php
                     if(isset($_GET['erreur']))

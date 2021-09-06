@@ -108,7 +108,7 @@ input[type=submit]:hover {
              <tr>
                  <td>
                      <label for="name"> Nom :</label>
-                     <input type="text" name="name" placeholder="votre nom">
+                     <input type="text" name="user_name" placeholder="votre nom">
                 </td>
                 </tr>
                 <tr>
