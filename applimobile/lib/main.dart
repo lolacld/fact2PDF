@@ -1,7 +1,7 @@
+import 'package:applimobile/page/formulaire.dart';
 import 'package:flutter/material.dart';
 import 'dart:html';
 
-import 'page/bottombar.dart';
 import 'page/HomePage.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
+        title: 'FACT 2 PDF',
         theme: ThemeData(
           // This is the theme of your application.
           //
@@ -28,8 +28,9 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/':(context)=> HomeScreen(),
-          '/sidebar': (context)=> widgedbotbar(),
-        }
+          '/formulaire':(context)=> Home(),
+        },
+      initialRoute: '/',
     );
   }
 }
