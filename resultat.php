@@ -1,6 +1,6 @@
 <?php
 ob_start(); // permet la redirection header
-// include('connect.php');
+// include('db_connect.php');
 
 ?>
 
@@ -92,7 +92,7 @@ if ($choix == "FACTURE") {
                 <?php echo $donnees3['nom']; ?>&nbsp;<?php echo $donnees3['prenom']; ?><br>
                 <?php echo $donnees3['email']; ?><br>
                 <?php echo $donnees3['adresse']; ?><br>
-                <?php echo $donnees3['gsm']; ?><br>
+                <?php echo $donnees3['telephone']; ?><br>
             </td>
         </tr>
     </table>

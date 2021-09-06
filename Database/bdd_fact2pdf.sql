@@ -46,7 +46,7 @@ CREATE TABLE utilisateur
     nom         Varchar(50) NOT NULL,
     prenom      Varchar(50) NOT NULL,
     MDP         Varchar(8)  NOT NULL,
-    is_admin     BIT(1)      NOT NULL,
+    is_admin    BIT(1)      NOT NULL,
     ID_factures Int         NOT NULL,
     CONSTRAINT utilisateur_PK PRIMARY KEY (ID),
     CONSTRAINT utilisateur_factures_FK FOREIGN KEY (ID_factures) REFERENCES factures (ID)

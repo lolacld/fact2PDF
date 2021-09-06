@@ -28,7 +28,7 @@
 ```bash
 
 # Démarrer wampserver et impoter la base données      
-Vous trouver la base de données dans le dossier database du projet (test1.sql)
+Vous trouver la base de données dans le dossier database du projet (bdd_fact2pdf.sql)
 
 # Obtenir le dernier repository
 git clone --depth=1 https://github.com/khalilbenhassine/testConfordev.git

@@ -8,9 +8,10 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
+$db = "fact2pdf";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password);
+$conn = mysqli_connect($servername, $username, $password, $db);
 
 // Check connection
 if ($conn->connect_error) {

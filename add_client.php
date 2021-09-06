@@ -1,5 +1,5 @@
 <?php
-require_once('connect.php');
+require_once('db_connect.php');
 include('commun/header.html');
 include('commun/scriptsJS/scriptCommun.html');
 ?>
@@ -14,8 +14,8 @@ include('commun/scriptsJS/scriptCommun.html');
         <input type="text" name="email"></p>
     <p> Address:
         <input type="text" name="address"></br></br></p>
-    <p> GSM:
-        <input type="text" name="gsm"></br></br></p>
+    <p> Téléphone:
+        <input type="text" name="telephone"></br></br></p>
     <input type="submit" name="register" value="Créer">
 </form>
 

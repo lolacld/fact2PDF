@@ -1,6 +1,6 @@
 <?php
 require('fpdf/fpdf.php'); // appel de la librairie FPDF
-include('connect.php');
+include('db_connect.php');
 
 //Sélection de la police
 $pdf = new FPDF();
@@ -26,7 +26,7 @@ $pdf->Text('70', '48', $vartelephone);
 $pdf->Text(140, '76', utf8_decode($donnees3['nom'] . ' ' . $donnees3['prenom']));
 $pdf->Text(140, '82', utf8_decode($donnees3['adresse']));
 $pdf->Text(140, '88', utf8_decode($donnees3['email']));
-$pdf->Text(140, '94', utf8_decode($donnees3['gsm']));
+$pdf->Text(140, '94', utf8_decode($donnees3['telephone']));
 
 
 //type de document
