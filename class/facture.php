@@ -25,6 +25,7 @@ class Facture {
         public $tva;
         public $quantite;
         public $ID_produit;
+        public $created;
 
         // Db connection
         public function __construct($db){
@@ -42,14 +43,14 @@ class Facture {
         // CREATE
         public function createFacture(){
             $sqlQuery = "INSERT INTO
-                        factures
+                       factures
                     SET
-                        id = :id,
                         montant = :montant, 
                         description = :description, 
                         tva = :tva, 
                         quantite = :quantite, 
-                        id_produit = :id_produit";
+                        id_produit = :id_produit,
+                        created =:created";
         
             $stmt = $this->conn->prepare($sqlQuery);
         
@@ -60,6 +61,7 @@ class Facture {
             $this->tva = htmlspecialchars(strip_tags($this->tva));
             $this->quantite = htmlspecialchars(strip_tags($this->quantite));
             $this->ID_produit = htmlspecialchars(strip_tags($this->ID_produit));
+            $this->created = htmlspecialchars(strip_tags($this->created));
         
             // bind data
             $stmt->bindParam(":montant", $this->ID);
@@ -68,6 +70,7 @@ class Facture {
             $stmt->bindParam(":tva", $this->tva);
             $stmt->bindParam(":quantite", $this->quantite);
             $stmt->bindParam(":id_produit", $this->id_produit);
+            $stmt->bindParam(":created", $this->created);
         
             if($stmt->execute()){
                return true;
@@ -84,26 +87,30 @@ class Facture {
                         tva, 
                         quantite, 
                         id_produit
+                        created
                       FROM
                         ". $this->db_table ."
                     WHERE 
                        id = ?
                     LIMIT 0,1";
 
+            // on prepare la requete
             $stmt = $this->conn->prepare($sqlQuery);
 
+            // BindParam lie notre paramètre à un nom de variable spécifique
             $stmt->bindParam(1, $this->id);
 
             $stmt->execute();
 
-            $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
-            
+            $dataRow = $stmt->fetch(PDO::FETCH_ASSOC); // Le paramètre indique à PDO de renvoyer le résultat sous forme de tableau associatif
+        
             $this->ID = $dataRow['ID'];
             $this->montant = $dataRow['montant'];
             $this->description = $dataRow['description'];
             $this->tva = $dataRow['tva'];
             $this->quantite = $dataRow['quantite'];
             $this->ID_produit = $dataRow['id_produit'];
+            $this->created = $dataRow['created'];
         }        
 
         // UPDATE facture
@@ -117,6 +124,7 @@ class Facture {
                         tva = :tva, 
                         quantite = :quantite, 
                         Id_produit = :Id_produit,
+                        created_produit = :created_produit
                     WHERE 
                         id = :id";
         
@@ -128,14 +136,16 @@ class Facture {
             $this->tva=htmlspecialchars(strip_tags($this->tva));
             $this->quantite=htmlspecialchars(strip_tags($this->quantite));
             $this->ID_produit=htmlspecialchars(strip_tags($this->ID_produit));
+            $this->created=htmlspecialchars(strip_tags($this->created));
         
             // bind data
-            $stmt->bindParam(":ID", $this->ID);
+            $stmt->bindParam(":ID", $this->Id);
             $stmt->bindParam(":montant", $this->montant);
             $stmt->bindParam(":description", $this->description);
             $stmt->bindParam(":tva", $this->tva);
             $stmt->bindParam(":quantite", $this->quantite);
             $stmt->bindParam(":Id_produit", $this->ID_produit);
+            $stmt->bindParam(":created", $this->created);
         
             if($stmt->execute()){
                return true;
