@@ -3,10 +3,7 @@ include('model/database.php');
 ?>
 
 <html>
-    <head>
-        <meta charset="utf_8">
-    </head>
-    
+<!--     
     <style>
         #container{
     width:100;
@@ -54,62 +51,57 @@ input[type=submit]:hover {
     border: 1px solid #53af57;
 }
 
-</style>
+</style> -->
 
-    <?php
+    <!-- <?php
 
         // VERIFICATION POUR L'INSCRIPTION
 
-    if(isset($_POST['forminscription'])) {
+    // if(isset($_POST['forminscription'])) {
 
-        $name = htmlspecialchars($_POST['name']);
-        $mail = htmlspecialchars($_POST['mail']);
-        $mail2 = htmlspecialchars($_POST['mail2']);
-        $mdp = sha1($_POST['mdp']);
-        $mdp2 = sha1($_POST['mdp2']);
+    //     $name = htmlspecialchars($_POST['name']);
+    //     $mail = htmlspecialchars($_POST['mail']);
+    //     $mail2 = htmlspecialchars($_POST['mail2']);
+    //     $mdp = sha1($_POST['mdp']);
+    //     $mdp2 = sha1($_POST['mdp2']);
     
-        if(!empty($_POST['name']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2'])) {
-        $namelength = strlen($name);
+    //     if(!empty($_POST['name']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2'])) {
+    //     $namelength = strlen($name);
     
-        if($namelength <= 255) 
-        {
-            if($mail == $mail2) 
-            {
-                if(filter_var($mail, FILTER_VALIDATE_EMAIL)) 
-                {
-                    $reqmail = $bdd->prepare("SELECT * FROM utilisateur WHERE mail = ?");
-                    $reqmail->execute(array($mail));
-                    $mailexist = $reqmail->rowCount();
+    //     if($namelength <= 255) 
+    //     {
+    //         if($mail == $mail2) 
+    //         {
+    //             if(filter_var($mail, FILTER_VALIDATE_EMAIL)) 
+    //             {
+    //                 $reqmail = $bdd->prepare("SELECT * FROM utilisateur WHERE mail = ?");
+    //                 $reqmail->execute(array($mail));
+    //                 $mailexist = $reqmail->rowCount();
                     
-                    if($mailexist == 0) 
-                    {
-                    if($mdp == $mdp2) 
-                    {
-                        $insertmbr = $bdd->prepare("INSERT INTO utilisateur(user_name, nom, prenom, MDP, ) VALUES(?, ?, ?)");
-                        $insertmbr->execute(array($name, $mail, $mdp));
-                        $erreur = "Votre compte a bien été créé ! <a href=\"connexion.php\">Me connecter</a>";
-                    } else {
-                        $erreur = "Vos mots de passes ne correspondent pas !";
-                    }
-                    } else {
-                    $erreur = "Adresse mail déjà utilisée !";
-                    }
-                } else {
-                    $erreur = "Votre adresse mail n'est pas valide !";
-                }
-            } else {
-                $erreur = "Vos adresses mail ne correspondent pas !";
-            }
-        } else {
-        $erreur = "Tous les champs doivent être complétés !";
-        }
-    }
-?>
-
-<html>
-    <head>
-
-    </head>
+    //                 if($mailexist == 0) 
+    //                 {
+    //                 if($mdp == $mdp2) 
+    //                 {
+    //                     $insertmbr = $bdd->prepare("INSERT INTO utilisateur(user_name, nom, prenom, MDP, ) VALUES(?, ?, ?)");
+    //                     $insertmbr->execute(array($name, $mail, $mdp));
+    //                     $erreur = "Votre compte a bien été créé ! <a href=\"connexion.php\">Me connecter</a>";
+    //                 } else {
+    //                     $erreur = "Vos mots de passes ne correspondent pas !";
+    //                 }
+    //                 } else {
+    //                 $erreur = "Adresse mail déjà utilisée !";
+    //                 }
+    //             } else {
+    //                 $erreur = "Votre adresse mail n'est pas valide !";
+    //             }
+    //         } else {
+    //             $erreur = "Vos adresses mail ne correspondent pas !";
+    //         }
+    //     } else {
+    //     $erreur = "Tous les champs doivent être complétés !";
+    //     }
+    // }
+?> -->
 <body>
      <form method="post" action="verification.php">
         <table>
@@ -142,5 +134,13 @@ input[type=submit]:hover {
                             <label for="mail2">Veuillez reconfirmez le mot de passe </label>
                             <input type="text" name="mdp2" placeholder="votre mail">
                         </td>
-                       <input type="submit" name="forminscription" value="Je m\'inscris"></body>
-                    
+                    </tr>
+                    <tr>
+                        <td>
+                       <input type="submit" name="forminscription" value="Je m\'inscris">
+    </td>
+                    </tr> 
+                    </table> 
+                    </form>
+                    </body>
+                </html>
