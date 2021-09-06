@@ -6,10 +6,10 @@
 class Database{
 
     // Propriétés de la base de données
-    private $dsn = 'mysql:host=fac2PDF;dbname=lesdevs;charset=utf8'; // vhost
+    private $dsn = 'mysql:host=fac2PDF;dbname=fac2pdf;charset=utf8'; // vhost
     private $username = "root";
     private $password = "";
-    private $db_name = "lesdevs";
+    private $db_name = "fac2pdf";
 
     // On commence par fermer la connexion si elle existait
    protected $connexion = null;

@@ -1,4 +1,7 @@
 <?php
+
+include('model/database.php');
+
 // VERIFICATIONS POUR LA CONNEXION
 session_start();
 
@@ -7,7 +10,7 @@ if(isset($_POST['username']) && isset($_POST['password']))
     // connexion à la base de données
     $db_username = 'root';
     $db_password = '';
-    $db_name     = 'lesdevs';
+    $db_name     = 'fac2pdf';
     $db_host     = 'localhost';
     $db = mysqli_connect($db_host, $db_username, $db_password, $db_name)
            or die('could not connect to database');
@@ -43,40 +46,50 @@ if(isset($_POST['username']) && isset($_POST['password']))
        header('Location: login.php?erreur=2'); // utilisateur ou mot de passe vide
     }
 
-    mysqli_close($db); // fermer la connexion
-}
 
 // VERIFICATION POUR L'INSCRIPTION
+// $db_username = 'root';
+// $db_password = '';
+// $db_name     = 'fac2pdf';
+// $db_host     = 'localhost';
+// $db = mysqli_connect($db_host, $db_username, $db_password, $db_name)
+//        or die('could not connect to database');
 
 if(isset($_POST['forminscription'])) {
 
-   $pseudo = htmlspecialchars($_POST['pseudo']);
+   // on utilise la fonction htmlscpecialchars pour eviter toutes injections XSS et SQL
+
+   $name = htmlspecialchars($_POST['name']);
    $mail = htmlspecialchars($_POST['mail']);
    $mail2 = htmlspecialchars($_POST['mail2']);
-   $mdp = sha1($_POST['mdp']);
+   $mdp = sha1($_POST['mdp']); // mot de passe hash
    $mdp2 = sha1($_POST['mdp2']);
 
-   if(!empty($_POST['pseudo']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2'])) {
-      $pseudolength = strlen($pseudo);
 
-      if($pseudolength <= 255) 
+   if(!empty($_POST['name']) AND !empty($_POST['mail']) AND !empty($_POST['mail2']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2'])) {
+      $namelength = strlen($name);
+
+      if($namelength <= 255) 
       {
-         if($mail == $mail2) 
+         if($mail == $mail2) // si les 2 mdps correspondent 
          {
             if(filter_var($mail, FILTER_VALIDATE_EMAIL)) 
             {
-               $reqmail = $bdd->prepare("SELECT * FROM membres WHERE mail = ?");
-               $reqmail->execute(array($mail));
-               $mailexist = $reqmail->rowCount();
+               $reqmail = $db->prepare("SELECT * FROM utilisateur WHERE mail = $mail");
+               $result = mysqli_query($db, $query);
                
-               if($mailexist == 0) 
+               if($result == 0) // s'il n'existe pas de mail en base
                {
                   if($mdp == $mdp2) 
                   {
-                     $insertmbr = $bdd->prepare("INSERT INTO utilisateur(user_name, nom, prenom, MDP, ) VALUES(?, ?, ?)");
-                     $insertmbr->execute(array($pseudo, $mail, $mdp));
-                     $erreur = "Votre compte a bien été créé ! <a href=\"connexion.php\">Me connecter</a>";
+                     $insertmbr = $db->prepare("INSERT INTO utilisateur(user_name, mdp, mdp2, is_admin, mail, mail2) VALUES($username, $mdp, $mdp2, ?, $mail, $mail2)");
+                     $result = mysqli_query($db, $query);
+                        if($result) 
+                        {
+                           $erreur = "Votre compte a bien été créé ! <a href=\"login.php\">Me connecter</a>";
+                        }
                   } else {
+                     // Sinon erreurs ... 
                      $erreur = "Vos mots de passes ne correspondent pas !";
                   }
                } else {
@@ -94,9 +107,7 @@ if(isset($_POST['forminscription'])) {
    } else {
       $erreur = "Tous les champs doivent être complétés !";
    }
+mysqli_close($db); // fermer la connexion
 }
-?>
-
-
-
+}
 ?>

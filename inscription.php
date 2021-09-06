@@ -53,7 +53,7 @@ input[type=submit]:hover {
 
 </style> -->
 
-    <!-- <?php
+    <!--  <?php
 
         // VERIFICATION POUR L'INSCRIPTION
 
@@ -100,7 +100,7 @@ input[type=submit]:hover {
     //     } else {
     //     $erreur = "Tous les champs doivent être complétés !";
     //     }
-    // }
+    // } -->
 ?> -->
 <body>
      <form method="post" action="verification.php">
