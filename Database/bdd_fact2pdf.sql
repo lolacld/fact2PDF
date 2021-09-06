@@ -61,7 +61,7 @@ CREATE TABLE client
     ID               Int Auto_increment NOT NULL,
     nom              Varchar(50) NOT NULL,
     email            Varchar(50) NOT NULL,
-    telephone        Int         NOT NULL,
+    telephone        Varchar(20) NOT NULL,
     adresse          Varchar(50) NOT NULL,
     CONSTRAINT client_PK PRIMARY KEY (ID)
 )ENGINE=InnoDB;
