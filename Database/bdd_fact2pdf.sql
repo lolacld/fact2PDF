@@ -43,11 +43,10 @@ CREATE TABLE utilisateur
 (
     ID          Int Auto_increment NOT NULL,
     user_name   Varchar(50) NOT NULL,
-    nom         Varchar(50) NOT NULL,
-    prenom      Varchar(50) NOT NULL,
+    mdp         Varchar(50) NOT NULL,
+    mdp2        Varchar(50) NOT NULL,
     mail        Varchar(50) NOT NULL,
     mail2       Varchar(50) NOT NULL,
-    MDP         Varchar(8)  NOT NULL,
     is_admin    BIT(1)      NOT NULL,
     ID_factures Int         NOT NULL,
     CONSTRAINT utilisateur_PK PRIMARY KEY (ID),
@@ -101,11 +100,11 @@ VALUES
     (29.98, 'etiam dignissim diam quis enim lobortis', 2, 20, 2),
     (76.50, 'aliquam faucibus purus', 3, 20, 3);
 
-INSERT INTO utilisateur (user_name, prenom, MDP, is_admin, ID_factures)
+INSERT INTO utilisateur (user_name, mdp, mdp2, mail, mail2, is_admin, ID_factures)
 VALUES
-    ('arthur.vigieraudu', 'arthur.vigieraudu@viacesi.fr', 'motdepasse', 1, 1),
-    ('lola.caillaud', 'lola.caillaud@viacesi.fr', 'motdepasse', 0, 2),
-    ('emma.scheuber', 'emma.scheuber@viacesi.fr', 'motdepasse', 0, 3);
+    ('arthur.vigieraudu', 'motdepasse', 'motdepasse', 'arthur.vigieraudu@viacesi.fr', 'arthur.vigieraudu@viacesi.fr', 1, 1),
+    ('lola.caillaud', 'motdepasse', 'motdepasse', 'lola.caillaud@viacesi.fr', 'lola.caillaud@viacesi.fr', 0, 2),
+    ('emma.scheuber', 'motdepasse', 'motdepasse', 'emma.scheuber@viacesi.fr', 'emma.scheuber@viacesi.fr', 0, 3);
 
 INSERT INTO client_facture (ID, ID_factures)
 VALUES
