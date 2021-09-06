@@ -45,6 +45,8 @@ CREATE TABLE utilisateur
     user_name   Varchar(50) NOT NULL,
     nom         Varchar(50) NOT NULL,
     prenom      Varchar(50) NOT NULL,
+    mail        Varchar(50) NOT NULL,
+    mail2       Varchar(50) NOT NULL,
     MDP         Varchar(8)  NOT NULL,
     is_admin    BIT(1)      NOT NULL,
     ID_factures Int         NOT NULL,
