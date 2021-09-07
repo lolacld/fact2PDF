@@ -1,3 +1,5 @@
+import 'package:applimobile/page/clientPage.dart';
+import 'package:applimobile/page/collabPage.dart';
 import 'package:applimobile/page/formulaire.dart';
 import 'package:flutter/material.dart';
 import 'dart:html';
@@ -9,11 +11,14 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
         title: 'FACT 2 PDF',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           // This is the theme of your application.
           //
@@ -28,6 +33,8 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/':(context)=> HomeScreen(),
+          '/client':(context)=> ClientScreen(),
+          '/collaborateur':(context)=> CollabScreen(),
           '/formulaire':(context)=> Home(),
         },
       initialRoute: '/',
