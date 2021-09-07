@@ -1,4 +1,5 @@
 import 'package:applimobile/page/clientPage.dart';
+import 'package:applimobile/page/pagedebienvenue.dart';
 import 'package:flutter/material.dart';
 import 'package:editable/editable.dart';
 import 'datatableinvoice.dart';
@@ -14,6 +15,7 @@ class HomePage extends State<HomeScreen> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
+    ContactList(),
     Text(
       'Index 0: Home',
       style: optionStyle,
@@ -49,30 +51,10 @@ class HomePage extends State<HomeScreen> {
               Navigator.pushNamed(context, '/formulaire');
             },
           ),
-          IconButton(
-            icon: const Icon(Icons.navigate_next),
-            tooltip: 'Go to the next page',
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute<void>(
-                builder: (BuildContext context) {
-                  return Scaffold(
-                    appBar: AppBar(
-                      title: const Text('Next page'),
-                    ),
-                    body: const Center(
-                      child: Text(
-                        'This is the next page',
-                        style: TextStyle(fontSize: 24),
-                      ),
-                    ),
-                  );
-                },
-              ));
-            },
-          ),
         ],
       ),
       body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
       ),
 
 

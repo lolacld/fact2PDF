@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:http/http.dart' as http;
 
 
 
@@ -32,18 +32,6 @@ class Tabledefacture extends StatelessWidget {
             style: TextStyle(fontStyle: FontStyle.italic),
           ),
         ),
-        DataColumn(
-          label: Text(
-            'quantité',
-            style: TextStyle(fontStyle: FontStyle.italic),
-          ),
-        ),
-        DataColumn(
-          label: Text(
-            'produit',
-            style: TextStyle(fontStyle: FontStyle.italic),
-          ),
-        ),
 
       ],
       rows: const <DataRow>[
@@ -52,9 +40,6 @@ class Tabledefacture extends StatelessWidget {
             DataCell(Text('1')),
             DataCell(Text('64.2')),
             DataCell(Text('nullam ac tortor vitae purus')),
-            DataCell(Text('20')),
-            DataCell(Text('2')),
-            DataCell(Text('Prooduit1')),
 
           ],
         ),
@@ -63,9 +48,6 @@ class Tabledefacture extends StatelessWidget {
             DataCell(Text('2')),
             DataCell(Text('43')),
             DataCell(Text('etiam dignissim diam quis enim lobortis')),
-            DataCell(Text('20')),
-            DataCell(Text('2')),
-            DataCell(Text('Produit2')),
 
           ],
         ),

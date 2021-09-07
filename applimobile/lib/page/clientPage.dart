@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'datatableinvoice.dart';
 
 class ClientScreen extends StatefulWidget {
+
+
   @override
   ClientPage createState() => ClientPage();
 }
@@ -13,16 +16,18 @@ class ClientItem {
     this.isExpanded = false,
   });
 
-  String expandedValue;
+  Object expandedValue;
   String headerValue;
   bool isExpanded;
+  String ClientName='';
 }
 
 List<ClientItem> generateItems(int numberOfItems) {
   return List<ClientItem>.generate(numberOfItems, (int index) {
     return ClientItem(
-      headerValue: 'Panel $index',
-      expandedValue: 'This is item number $index',
+      headerValue: 'Client $index',
+      expandedValue: Tabledefacture(),
+
     );
   });
 }
@@ -56,18 +61,22 @@ class ClientPage extends State<ClientScreen> {
               title: Text(item.headerValue),
             );
           },
-          body: ListTile(
-              title: Text(item.expandedValue),
-              trailing: const Icon(Icons.delete),
-              onTap: () {
-                setState(() {
-                  _data.removeWhere((ClientItem currentItem) => item == currentItem);
-                });
-              }),
+          body: Container(
+              child: Tabledefacture()
+
+          )
+          ,
           isExpanded: item.isExpanded,
         );
       }).toList(),
     );
   }
 }
+void IntitCLientName (int index, String ClientName)
+ {
+   switch(index) {
+     case 1:
+       ClientName = '';
+   }
 
+}

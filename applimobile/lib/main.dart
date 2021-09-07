@@ -5,6 +5,7 @@ import 'dart:html';
 
 import 'page/HomePage.dart';
 
+
 void main() {
   runApp(MyApp());
 }
@@ -32,8 +33,9 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/':(context)=> HomeScreen(),
-          '/clientPage':(context)=> ClientScreen(),
+          '/client':(context)=> ClientScreen(),
           '/formulaire':(context)=> Home(),
+
         },
       initialRoute: '/',
     );
