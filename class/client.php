@@ -3,7 +3,7 @@
 class Client {
     
         // Connection
-        private $conn;
+        public $conn;
 
         // Columns
         public $id;
@@ -13,7 +13,7 @@ class Client {
         public $adresse;
 
         // Db connection
-        public function __construct($db){
+        public function getConnexion($db){
             $this->conn = $db;
         }
 

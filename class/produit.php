@@ -10,7 +10,7 @@ updateFacture() — Mettre à jour l'enregistrement.
 deleteFacture() — Supprime un enregistrement.
 */
 
-class Produit extends Database {
+class Produit  {
     
         // Connection
         private $conn;
