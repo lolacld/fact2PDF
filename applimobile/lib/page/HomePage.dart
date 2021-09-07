@@ -23,6 +23,7 @@ class HomePage extends State<HomeScreen> {
       'Index 2: School',
       style: optionStyle,
     ),
+
     Text(
       'Index 3: Settings',
       style: optionStyle,
@@ -75,12 +76,7 @@ class HomePage extends State<HomeScreen> {
           ),
         ],
       ),
-      body: Center(child:
-          Container(
-            width: double.infinity,
-            child: Tabledefacture(),
-            height: double.infinity,
-          )
+      body: Center(
       ),
 
 
