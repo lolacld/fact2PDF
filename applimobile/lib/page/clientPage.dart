@@ -28,7 +28,7 @@ List<ClientItem> generateItems(int numberOfItems) {
 }
 
 class ClientPage extends State<ClientScreen> {
-  final List<ClientItem> _data = generateItems(8);
+  final List<ClientItem> _data = generateItems(6);
 
   @override
   Widget build(BuildContext context) {
@@ -36,30 +36,38 @@ class ClientPage extends State<ClientScreen> {
         body: Column(
           children: [
             Text('Clients'),
-            //_buildPanel(),
+            _buildPanel(),
           ],
         )
     );
   }
-}
-/*  Widget _buildPanel() {
+
+  Widget _buildPanel() {
     return ExpansionPanelList(
       expansionCallback: (int index, bool isExpanded) {
         setState(() {
           _data[index].isExpanded = !isExpanded;
         });
       },
-    children: _data.map<ExpansionPanel>((Item item) {
-      return ExpansionPanel(
-          headerBuilder: (BuildContext context, bool
-      } isExpanded) {
+      children: _data.map<ExpansionPanel>((ClientItem item) {
+        return ExpansionPanel(
+          headerBuilder: (BuildContext context, bool isExpanded) {
             return ListTile(
-            title: Text(item.headerValue
-          }),
+              title: Text(item.headerValue),
+            );
+          },
+          body: ListTile(
+              title: Text(item.expandedValue),
+              trailing: const Icon(Icons.delete),
+              onTap: () {
+                setState(() {
+                  _data.removeWhere((ClientItem currentItem) => item == currentItem);
+                });
+              }),
+          isExpanded: item.isExpanded,
+        );
+      }).toList(),
     );
-            },
-
-    );
-
-}*/
+  }
+}
 
