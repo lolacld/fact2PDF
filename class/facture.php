@@ -10,15 +10,12 @@ updateFacture() — Mettre à jour l'enregistrement.
 deleteFacture() — Supprime un enregistrement.
 */
 
-class Facture {
+class Facture extends Database {
     
         // Connection
         private $conn;
 
-        // Table
-        private $db_table = "factures";
-
-        // Columns
+        // Champs (colonnes)
         public $ID;
         public $montant;
         public $description;
@@ -89,7 +86,7 @@ class Facture {
                         id_produit
                         created
                       FROM
-                        ". $this->db_table ."
+                        factures
                     WHERE 
                        id = ?
                     LIMIT 0,1";
@@ -116,7 +113,7 @@ class Facture {
         // UPDATE facture
         public function updateFacture(){
             $sqlQuery = "UPDATE
-                        ". $this->db_table ."
+                        factures
                     SET
                         ID = :ID,
                         montant = :montant, 
