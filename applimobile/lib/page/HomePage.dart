@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:editable/editable.dart';
+import 'datatableinvoice.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
+
   HomePage createState() => HomePage();
 }
 
@@ -69,10 +72,17 @@ class HomePage extends State<HomeScreen> {
           ),
         ],
       ),
-      body: Container(
-
-
+      body: Center(child:
+          Container(
+            width: double.infinity,
+            child: Tabledefacture(),
+            height: double.infinity,
+          )
       ),
+
+
+
+
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -96,4 +106,5 @@ class HomePage extends State<HomeScreen> {
   }
 
 }
+
 
