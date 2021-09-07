@@ -1,11 +1,6 @@
 <?php
 
-// structure html css
-require_once('/wamp64/www/fac2PDf/fact2PDF/global/scriptsJS/scriptCommun.html');
-include('/wamp64/www/fac2PDf/fact2PDF/global/header.html');
-
-//require_once('../config/database.php');
-
+require_once('/wamp64/www/fac2PDF/fact2PDF/global/header.html');
 require_once('/wamp64/www/fac2PDf/fact2PDF/class/client.php');
 ?>
 
@@ -25,6 +20,7 @@ require_once('/wamp64/www/fac2PDf/fact2PDF/class/client.php');
      
      <tr>
          <?php
+         $Client = new Client($db);
          
     if($Client->getAllClients()){
         echo "Voici la liste des clients.";
