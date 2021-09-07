@@ -10,7 +10,9 @@ updateFacture() — Mettre à jour l'enregistrement.
 deleteFacture() — Supprime un enregistrement.
 */
 
-class Produit extends Database {
+include('/wamp64/www/fac2PDF/fact2PDF/config/database.php');
+
+class Produit {
     
         // Connection
         private $conn;
@@ -19,15 +21,16 @@ class Produit extends Database {
         private $db_table = "produit";
 
         // Columns
-        public $ID;
+        public $id;
         public $nom;
         public $ref;
         public $description;
         public $prix;
 
         // Db connection
-        public function __construct($db){
-            $this->conn = $db;
+        public function __construct(){
+            $Db = new Database();
+            $this->conn = $Db->getConnexion();
         }
 
         // GET ALL
@@ -43,7 +46,6 @@ class Produit extends Database {
             $sqlQuery = "INSERT INTO
                         produit
                     SET
-                        id = :id,
                         nom = :nom, 
                         ref = :ref, 
                         description = :description, 

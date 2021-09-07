@@ -14,7 +14,7 @@ include('/wamp64/www/fac2PDF/fact2PDF/config/database.php');
 class Facture {
     
         // Connection
-        public $conn;
+        protected $conn;
 
         // Champs (colonnes)
         public $ID;
@@ -22,24 +22,26 @@ class Facture {
         public $description;
         public $tva;
         public $quantite;
-        public $ID_produit;
+        public $id_produit;
         public $created;
 
         // Db connection
-        public function __construct($db){
-            $this->conn = $db;
+        public function __construct(){
+            $Db = new Database();
+            $this->conn = $Db->getConnexion();
         }
 
         // GET ALL
         public function getAllFactures(){
-            $sqlQuery = "SELECT * FROM factures";
-            $stmt = $this->conn->prepare($sqlQuery);
+            $sql = "SELECT * FROM factures";
+            $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             return $stmt;
         }
 
         // CREATE
         public function createFacture(){
+            
             $sqlQuery = "INSERT INTO
                        factures
                     SET
@@ -47,28 +49,26 @@ class Facture {
                         description = :description, 
                         tva = :tva, 
                         quantite = :quantite, 
-                        id_produit = :id_produit,
-                        created =:created";
-        
+                        id_produit = :id_produit";
+
             $stmt = $this->conn->prepare($sqlQuery);
         
             // sanitize
-            $this->ID = htmlspecialchars(strip_tags($this->ID));
             $this->montant = htmlspecialchars(strip_tags($this->montant));
             $this->description = htmlspecialchars(strip_tags($this->description));
             $this->tva = htmlspecialchars(strip_tags($this->tva));
             $this->quantite = htmlspecialchars(strip_tags($this->quantite));
-            $this->ID_produit = htmlspecialchars(strip_tags($this->ID_produit));
-            $this->created = htmlspecialchars(strip_tags($this->created));
+            $this->id_produit = htmlspecialchars(strip_tags($this->id_produit));
         
             // bind data
-            $stmt->bindParam(":montant", $this->ID);
             $stmt->bindParam(":montant", $this->montant);
             $stmt->bindParam(":description", $this->description);
             $stmt->bindParam(":tva", $this->tva);
             $stmt->bindParam(":quantite", $this->quantite);
             $stmt->bindParam(":id_produit", $this->id_produit);
-            $stmt->bindParam(":created", $this->created);
+
+            //var_dump($stmt->debugDumpParams());
+            
         
             if($stmt->execute()){
                return true;

@@ -2,26 +2,23 @@
     
     include_once('/wamp64/www/fac2PDF/fact2PDF/class/client.php');
     include_once('/wamp64/www/fac2PDF/fact2PDF/config/database.php');
-    
-    // Instanciation de notre classe Database pour la connexion et nos requetes
-    $database = new Database();
-    $db = $database->getConnexion();
 
-    // Instanciation Class client pour manipuler notre objet client
-    $client = new Client($db);
-
-    $data = json_decode(file_get_contents("php://input"));
-
-    // on initianilise les variables à la creation
-    $client->nom = $data->nom;
-    $client->email = $data->email;
-    $client->telephone = $data->telephone;
-    $client->adresse = $data->adresse;
+   //La méthode GET est utilisée ici car nous ne pouvions pas utiliser POST (casse)
+    $data = $_GET; 
     
-    
-    if($client->createClient()){
-        echo 'client créé avec succès.';
+    // Instanciation Class facture pour manipuler notre objet Facture 
+    $Client = new Client();
+
+    // on initialiise les variables
+    $Client->nom = $data['nom'];
+    $Client->email = $data['email'];
+    $Client->telephone = $data['telephone'];
+    $Client->adresse = $data['adresse'];
+
+    if($Client->createClient()){
+        echo 'Le client a bien été créé !';
     } else{
-        echo 'Probleme creation client.';
+        echo 'Probleme creation du client.';
     }
+        
 ?>

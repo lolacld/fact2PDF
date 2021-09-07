@@ -1,10 +1,7 @@
 <?php
 
-    //header("Content-Type: application/json; charset=UTF-8");
-    
-    include_once('/wamp64/www/fac2PDF/fact2PDF/class/produit.php');
-    include_once('/wamp64/www/fac2PDF/fact2PDF/config/database.php');
-
+     include_once('/wamp64/www/fac2PDF/fact2PDF/class/produit.php');
+     include_once('/wamp64/www/fac2PDF/fact2PDF/config/database.php');
 
     $database = new Database();
     $db = $database->getConnexion();
@@ -28,10 +25,11 @@
             
             extract($row);
             $e = array(
+                "id" => $id,
                 "nom" => $nom,
                 "ref" => $ref,
-                "description" => $description, 
-                "prix" => $prix,
+                "description" => $description,
+                "prix" => $prix
             );
 
             array_push($produitArr["body"], $e);

@@ -1,14 +1,7 @@
 <?php
 
-    //header("Content-Type: application/json; charset=UTF-8");
-    
-    include_once('/wamp64/www/fac2PDF/fact2PDF/class/client.php');
-    include_once('/wamp64/www/fac2PDF/fact2PDF/config/database.php');
-        // script js et jsquery
-    include('/wamp64/www/fac2PDF/fact2PDF/global/scriptsJS/scriptCommun.html');
-    // structure html css
-    include('/wamp64/www/fac2PDF/fact2PDF/global/header.html');
-   
+     include_once('/wamp64/www/fac2PDF/fact2PDF/class/client.php');
+     include_once('/wamp64/www/fac2PDF/fact2PDF/config/database.php');
 
     $database = new Database();
     $db = $database->getConnexion();
@@ -48,6 +41,6 @@
         );
     }
 
-    //footer
-    include('/wamp64/www/fac2PDF/fact2PDF/global/footer.html');
+    // //footer
+    // include('/wamp64/www/fac2PDF/fact2PDF/global/footer.html');
 ?>
