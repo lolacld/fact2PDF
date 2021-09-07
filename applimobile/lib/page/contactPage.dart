@@ -1,84 +1,83 @@
 import 'package:flutter/material.dart';
-import 'datatableinvoice.dart';
 
-class ClientScreen extends StatefulWidget {
+class ContactScreen extends StatefulWidget {
+  @override
+  ContactPage createState() => ContactPage();
+}
 
+class ContactPage extends State<ContactScreen> {
+  late TextEditingController _controller;
 
   @override
-  ClientPage createState() => ClientPage();
-}
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
 
-// stores ExpansionPanel state information
-class ClientItem {
-  ClientItem({
-    required this.expandedValue,
-    required this.headerValue,
-    this.isExpanded = false,
-  });
-
-  Object expandedValue;
-  String headerValue;
-  bool isExpanded;
-  String ClientName='';
-}
-
-List<ClientItem> generateItems(int numberOfItems) {
-  return List<ClientItem>.generate(numberOfItems, (int index) {
-    return ClientItem(
-      headerValue: 'Client $index',
-      expandedValue: Tabledefacture(),
-
-    );
-  });
-}
-
-class ClientPage extends State<ClientScreen> {
-  final List<ClientItem> _data = generateItems(6);
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final ButtonStyle style =
+        ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
     return Scaffold(
-        body: Column(
-          children: [
-            Padding(padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                child: Text('Clients', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
-            ),
-            _buildPanel(),
-          ],
-        )
-    );
+        body: Center(
+          child: Container(
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: Column(
+                  children: [
+                    Padding(padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                        child: Text('Contact', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
+                    ),
+                    SizedBox(height: 10),
+                    Container(
+                      width: 100,
+                      alignment: ,
+                      child: TextField(
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Email',
+                          )),
+                    ),
+                    SizedBox(height: 10),
+                    Container(
+                      width: 100,
+                      child: TextField(
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Objet',
+                          )),
+                    ),
+                    SizedBox(height: 10),
+                    ElevatedButton(
+                      style: style,
+                      onPressed: () {},
+                      child: const Text('Joindre un fichier'),
+                    ),
+                    SizedBox(height: 10),
+                    Container(
+                      width: 300,
+                      child: TextField(
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Message',
+                          )),
+                    ),
+                    SizedBox(height: 10),
+                    ElevatedButton(
+                      style: style,
+                      onPressed: () {},
+                      child: const Text('Envoyer'),
+                    ),
+                  ],
+                ),
+              )
+          ),
+        ));
   }
-
-  Widget _buildPanel() {
-    return ExpansionPanelList(
-      expansionCallback: (int index, bool isExpanded) {
-        setState(() {
-          _data[index].isExpanded = !isExpanded;
-        });
-      },
-      children: _data.map<ExpansionPanel>((ClientItem item) {
-        return ExpansionPanel(
-          headerBuilder: (BuildContext context, bool isExpanded) {
-            return ListTile(
-              title: Text(item.headerValue),
-            );
-          },
-          body: Container(
-              child: Tabledefacture()
-
-          )
-          ,
-          isExpanded: item.isExpanded,
-        );
-      }).toList(),
-    );
-  }
-}
-void IntitCLientName (int index, String ClientName)
- {
-   switch(index) {
-     case 1:
-       ClientName = '';
-   }
-
 }

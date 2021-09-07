@@ -16,42 +16,36 @@ class _ContactListState extends State<ContactList> {
     Contact(nom: 'Louise Aladin', imageProfil: 'image-4.jpg'),
   ];
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-       ListView.builder(
-
-          itemCount: contacts.length,
-          itemBuilder: (context, index) {
-
-            /*var nameInitial = contacts[index].nom[0];
-            if (contacts[index].imageProfil.length > 0) {
-              nameInitial = '';
-            }*/
-
-            return Padding(
-              padding:
-              const EdgeInsets.symmetric(vertical: 0.0, horizontal: 4.0),
-              child: Card(
-                child: ListTile(
-
-                  /*onTap: () => showDialog(context: context, builder: (context)
-                  => _dialogBuilder(context, contacts[index])),*/
-
-                  title: Text(contacts[index].nom, style: Theme.of(context).textTheme.title),
-                  leading: CircleAvatar(
-                    //backgroundColor: _color,
-                    backgroundImage:
-                    AssetImage('assets/${contacts[index].imageProfil}'),
-
-                  ),
-                ),
-              ),
-            );
-          }),
+        body: Column(
+          children: [
+            Padding(padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                child: Text('Bienvenue', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
+            ),
+            Expanded(child: Container(
+                child:
+                ListView.builder(
+                    itemCount: contacts.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding:
+                        const EdgeInsets.symmetric(vertical: 0.0, horizontal: 4.0),
+                        child: Card(
+                          child: ListTile(
+                            title: Text(contacts[index].nom,
+                                style: Theme.of(context).textTheme.title),
+                            leading: CircleAvatar(
+                              backgroundColor: Colors.greenAccent,
+                            ),
+                          ),
+                        ),
+                      );
+                    })
+            ),)
+          ]
+        )
     );
   }
 }

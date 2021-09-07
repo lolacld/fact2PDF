@@ -1,4 +1,5 @@
 import 'package:applimobile/page/clientPage.dart';
+import 'package:applimobile/page/contactPage.dart';
 import 'package:applimobile/page/pagedebienvenue.dart';
 import 'package:applimobile/page/collabPage.dart';
 import 'package:flutter/material.dart';
@@ -14,12 +15,9 @@ class HomePage extends State<HomeScreen> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
     ContactList(),
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
     ClientScreen(),
     CollabScreen(),
+    ContactScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -64,9 +62,14 @@ class HomePage extends State<HomeScreen> {
             icon: Icon(Icons.contacts),
             label: 'Collab.',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.email),
+            label: 'Contact',
+          ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.deepPurple,
+        unselectedItemColor: Colors.greenAccent,
         onTap: _onItemTapped,
       ),
     );

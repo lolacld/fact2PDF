@@ -40,7 +40,9 @@ class ClientPage extends State<ClientScreen> {
     return Scaffold(
         body: Column(
           children: [
-            Text('Clients'),
+            Padding(padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                child: Text('Clients', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
+            ),
             _buildPanel(),
           ],
         )
