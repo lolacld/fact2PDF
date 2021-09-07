@@ -80,8 +80,8 @@ class HomePage extends State<HomeScreen> {
             label: 'Accueil',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
+            icon: Icon(Icons.person),
+            label: 'Clients',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
