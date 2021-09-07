@@ -1,15 +1,11 @@
 <?php
 
-    //header("Content-Type: application/json; charset=UTF-8");
-    
-    include_once('/wamp64/www/fac2PDF/fact2PDF/class/facture.php');
-    include_once('/wamp64/www/fac2PDF/fact2PDF/config/database.php');
+require_once('/wamp64/www/fac2PDF/fact2PDF/global/header.html');
 
+include_once('/wamp64/www/fac2PDF/fact2PDF/model/factureModel.php');
+include('/wamp64/www/fac2PDF/fact2PDF/model/database.php');
 
-    $database = new Database();
-    $db = $database->getConnexion();
-
-    $facture = new Facture($db);
+    $facture = new Facture();
 
     $stmt = $facture->getAllFactures();
     $itemCount = $stmt->RowCount();

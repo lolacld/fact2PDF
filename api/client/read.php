@@ -1,7 +1,8 @@
 <?php
+    require_once('/wamp64/www/fac2PDF/fact2PDF/global/header.html');
 
-     include_once('/wamp64/www/fac2PDF/fact2PDF/class/client.php');
-     include_once('/wamp64/www/fac2PDF/fact2PDF/config/database.php');
+     include_once('/wamp64/www/fac2PDF/fact2PDF/model/clientModel.php');
+     require_once('/wamp64/www/fac2PDF/fact2PDF/model/database.php');
 
     $database = new Database();
     $db = $database->getConnexion();

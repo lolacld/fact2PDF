@@ -10,7 +10,7 @@ updateFacture() — Mettre à jour l'enregistrement.
 deleteFacture() — Supprime un enregistrement.
 */
 
-include('/wamp64/www/fac2PDF/fact2PDF/config/database.php');
+include('../model/database.php');
 
 class Produit {
     
