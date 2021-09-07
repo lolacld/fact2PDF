@@ -9,12 +9,12 @@
 
 CREATE TABLE produit
 (
-    ID          Int Auto_increment NOT NULL,
+    id          Int Auto_increment NOT NULL,
     nom         Varchar(50) NOT NULL,
     ref         Varchar(50) NOT NULL,
     description Varchar(50) NOT NULL,
     prix        Float       NOT NULL,
-    CONSTRAINT produit_PK PRIMARY KEY (ID)
+    CONSTRAINT produit_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
 
@@ -24,14 +24,16 @@ CREATE TABLE produit
 
 CREATE TABLE factures
 (
-    ID          Int Auto_increment NOT NULL,
+    id          Int Auto_increment NOT NULL,
     montant     Double NOT NULL,
     description Text   NOT NULL,
     TVA         FLOAT  NOT NULL,
     quantite    Int    NOT NULL,
-    ID_produit  Int,
-    CONSTRAINT factures_PK PRIMARY KEY (ID),
-    CONSTRAINT factures_produit_FK FOREIGN KEY (ID_produit) REFERENCES produit (ID)
+    id_produit  Int,
+    id_client   Int,
+    CONSTRAINT factures_PK PRIMARY KEY (id),
+    CONSTRAINT factures_produit_FK FOREIGN KEY (id_produit) REFERENCES produit (id)
+    CONSTRAINT factures_client_FK FOREIGN KEY (id_client) REFERENCES client (id)
 )ENGINE=InnoDB;
 
 
@@ -41,7 +43,7 @@ CREATE TABLE factures
 
 CREATE TABLE utilisateur
 (
-    ID          Int Auto_increment NOT NULL,
+    id          Int Auto_increment NOT NULL,
     user_name   Varchar(50) NOT NULL,
     mdp         Varchar(50) NOT NULL,
     mdp2        Varchar(50) NOT NULL,
@@ -49,8 +51,8 @@ CREATE TABLE utilisateur
     mail2       Varchar(50) NOT NULL,
     is_admin    BIT(1)      NOT NULL,
     ID_factures Int         NOT NULL,
-    CONSTRAINT utilisateur_PK PRIMARY KEY (ID),
-    CONSTRAINT utilisateur_factures_FK FOREIGN KEY (ID_factures) REFERENCES factures (ID)
+    CONSTRAINT utilisateur_PK PRIMARY KEY (id),
+    CONSTRAINT utilisateur_factures_FK FOREIGN KEY (id_factures) REFERENCES factures (id)
 )ENGINE=InnoDB;
 
 #------------------------------------------------------------
@@ -59,26 +61,12 @@ CREATE TABLE utilisateur
 
 CREATE TABLE client
 (
-    ID               Int Auto_increment NOT NULL,
+    id               Int Auto_increment NOT NULL,
     nom              Varchar(50) NOT NULL,
     email            Varchar(50) NOT NULL,
     telephone        Varchar(20) NOT NULL,
     adresse          Varchar(50) NOT NULL,
-    CONSTRAINT client_PK PRIMARY KEY (ID)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: contracte
-#------------------------------------------------------------
-
-CREATE TABLE client_facture
-(
-    ID          Int NOT NULL,
-    ID_factures Int NOT NULL,
-    CONSTRAINT contracte_PK PRIMARY KEY (ID, ID_factures),
-    CONSTRAINT contracte_client_FK FOREIGN KEY (ID) REFERENCES client (ID),
-    CONSTRAINT contracte_factures0_FK FOREIGN KEY (ID_factures) REFERENCES factures (ID)
+    CONSTRAINT client_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
 INSERT INTO client (nom, email, telephone, adresse)
@@ -94,22 +82,16 @@ VALUES
     ('Produit2', '75XZ2761', 'fugiat nulla pariatur', 14.99),
     ('Produit3', 'TS56P892', 'anim id est laborum', 25.50);
 
-INSERT INTO factures (montant, description, quantite, TVA, ID_produit)
+INSERT INTO factures (montant, description, quantite, TVA, id_produit, id_client)
 VALUES
     (64.20, 'nullam ac tortor vitae purus', 2, 20, 1),
     (29.98, 'etiam dignissim diam quis enim lobortis', 2, 20, 2),
     (76.50, 'aliquam faucibus purus', 3, 20, 3);
 
-INSERT INTO utilisateur (user_name, mdp, mdp2, mail, mail2, is_admin, ID_factures)
+INSERT INTO utilisateur (user_name, mdp, mdp2, mail, mail2, is_admin, id_factures)
 VALUES
     ('arthur.vigieraudu', 'motdepasse', 'motdepasse', 'arthur.vigieraudu@viacesi.fr', 'arthur.vigieraudu@viacesi.fr', 1, 1),
     ('lola.caillaud', 'motdepasse', 'motdepasse', 'lola.caillaud@viacesi.fr', 'lola.caillaud@viacesi.fr', 0, 2),
     ('emma.scheuber', 'motdepasse', 'motdepasse', 'emma.scheuber@viacesi.fr', 'emma.scheuber@viacesi.fr', 0, 3);
-
-INSERT INTO client_facture (ID, ID_factures)
-VALUES
-       (1, 1),
-       (2, 2),
-       (3, 3);
 
 

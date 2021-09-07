@@ -11,7 +11,9 @@ class CollabPage extends State<CollabScreen> {
     return Scaffold(
         body: Column(
       children: [
-        Text('Collaborateurs'),
+        Padding(padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+            child: Text('Collaborateurs', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
+        ),
         DataTable(
           columns: const <DataColumn>[
             DataColumn(
@@ -52,14 +54,6 @@ class CollabPage extends State<CollabScreen> {
                 DataCell(Text('emma.scheuber@viacesi.fr')),
               ]),
           ],
-        ),
-
-        const Divider(
-          height: 10,
-          thickness: 2,
-          indent: 20,
-          endIndent: 20,
-          color: Colors.black,
         ),
       ],
     ));
