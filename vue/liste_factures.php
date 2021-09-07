@@ -1,8 +1,8 @@
 <?php
 
-require_once('/wamp64/www/fac2PDF/fact2PDF/global/header.html');
-require_once('/wamp64/www/fac2PDf/fact2PDF/class/facture.php');
-require_once('../config/database.php');
+require_once('/wamp64/www/fact2PDF/global/header.html');
+require_once('/wamp64/www/fact2PDF/model/factureModel.php');
+require_once('/wamp64/www/fact2PDF/model/database.php');
 ?>
 
 

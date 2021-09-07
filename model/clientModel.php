@@ -1,6 +1,6 @@
 <?php
 
-// include('/fact2PDF/model/database.php');
+include '/wamp64/www/fact2PDF/model/database.php';
 class Client {
     
         // Connection

@@ -1,9 +1,9 @@
 <?php
 
-require_once('/wamp64/www/fac2PDF/fact2PDF/global/header.html');
-require_once('/wamp64/www/fac2PDf/fact2PDF/class/client.php');
+require_once('/wamp64/www/fact2PDF/global/header.html');
+require_once('/wamp64/www/fact2PDF/model/clientModel.php');
+require_once('/wamp64/www/fact2PDF/model/database.php');
 ?>
-
 
 <body>
  <h1>Liste des clients</h1>
