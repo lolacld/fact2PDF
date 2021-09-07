@@ -53,13 +53,13 @@ class Produit {
                         
             $stmt = $this->conn->prepare($sqlQuery);
         
-            // sanitize
+            // nettoyage des données
             $this->nom = htmlspecialchars(strip_tags($this->nom));
             $this->ref = htmlspecialchars(strip_tags($this->ref));
             $this->description = htmlspecialchars(strip_tags($this->description));
             $this->prix = htmlspecialchars(strip_tags($this->prix));
         
-            // bind data
+            // Lie notre parametre ":parametre" 
             $stmt->bindParam(":nom", $this->nom);
             $stmt->bindParam(":ref", $this->ref);
             $stmt->bindParam(":description", $this->description);

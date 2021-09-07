@@ -94,7 +94,7 @@ class Client {
             $sqlQuery = "DELETE FROM client WHERE id = ?";
             $stmt = $this->conn->prepare($sqlQuery);
         
-            $this->id=htmlspecialchars(strip_tags($this->id));
+            $this->id = htmlspecialchars(strip_tags($this->id));
         
             $stmt->bindParam(1, $this->id);
         
@@ -103,6 +103,5 @@ class Client {
             }
             return false;
         }
-
     }
 ?>
