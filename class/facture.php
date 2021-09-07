@@ -9,11 +9,12 @@ createFacture () — Créer un enregistrement.
 updateFacture() — Mettre à jour l'enregistrement.
 deleteFacture() — Supprime un enregistrement.
 */
+include('/wamp64/www/fac2PDF/fact2PDF/config/database.php');
 
-class Facture extends Database {
+class Facture {
     
         // Connection
-        private $conn;
+        public $conn;
 
         // Champs (colonnes)
         public $ID;
