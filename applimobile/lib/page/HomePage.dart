@@ -17,10 +17,6 @@ class HomePage extends State<HomeScreen> {
     ),
     ClientScreen(),
     Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-    Text(
       'Index 3: Settings',
       style: optionStyle,
     ),
