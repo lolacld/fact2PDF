@@ -1,9 +1,10 @@
 <?php
 
+include('/wamp64/www/fac2PDF/fact2PDF/config/database.php');
 class Client {
     
         // Connection
-        public $conn;
+        protected $conn;
 
         // Columns
         public $id;
@@ -13,20 +14,22 @@ class Client {
         public $adresse;
 
         // Db connection
-        public function getConnexion($db){
-            $this->conn = $db;
+        public function __construct(){
+            $Db = new Database();
+            $this->conn = $Db->getConnexion();
         }
 
         // GET ALL
         public function getAllClients(){
-            $sqlQuery = "SELECT * FROM client";
-            $stmt = $this->conn->prepare($sqlQuery);
+            $sql = "SELECT * FROM client";
+            $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             return $stmt;
         }
 
         // CREATE
         public function createClient(){
+
             $sqlQuery = "INSERT INTO
                         client
                     SET
@@ -38,18 +41,19 @@ class Client {
             $stmt = $this->conn->prepare($sqlQuery);
         
             // sanitize
-            $this->nom=htmlspecialchars(strip_tags($this->nom));
-            $this->email=htmlspecialchars(strip_tags($this->email));
-            $this->telephone=htmlspecialchars(strip_tags($this->telephone));
-            $this->adress=htmlspecialchars(strip_tags($this->adresse));
+            $this->nom = htmlspecialchars(strip_tags($this->nom));
+            $this->email = htmlspecialchars(strip_tags($this->email));
+            $this->telephone = htmlspecialchars(strip_tags($this->telephone));
+            $this->adresse = htmlspecialchars(strip_tags($this->adresse));
+
             
-        
             // bind data
             $stmt->bindParam(":nom", $this->nom);
             $stmt->bindParam(":email", $this->email);
             $stmt->bindParam(":telephone", $this->telephone);
             $stmt->bindParam(":adresse", $this->adresse);
            
+            //var_dump($stmt->debugDumpParams());
         
             if($stmt->execute()){
                return true;

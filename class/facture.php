@@ -33,9 +33,9 @@ class Facture {
 
         // GET ALL
         public function getAllFactures(){
-            global $db;
+            global $Db;
             $sql = "SELECT * FROM factures";
-            $result = $db->query($sql);
+            $result = $Db->query($sql);
             return $result;
         }
 
@@ -58,7 +58,7 @@ class Facture {
             $this->description = htmlspecialchars(strip_tags($this->description));
             $this->tva = htmlspecialchars(strip_tags($this->tva));
             $this->quantite = htmlspecialchars(strip_tags($this->quantite));
-            $this->ID_produit = htmlspecialchars(strip_tags($this->id_produit));
+            $this->id_produit = htmlspecialchars(strip_tags($this->id_produit));
         
             // bind data
             $stmt->bindParam(":montant", $this->montant);
