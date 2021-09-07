@@ -33,10 +33,10 @@ class Facture {
 
         // GET ALL
         public function getAllFactures(){
-            global $Db;
             $sql = "SELECT * FROM factures";
-            $result = $Db->query($sql);
-            return $result;
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt;
         }
 
         // CREATE

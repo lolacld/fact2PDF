@@ -2,8 +2,6 @@
     
     include_once('/wamp64/www/fac2PDF/fact2PDF/class/client.php');
     include_once('/wamp64/www/fac2PDF/fact2PDF/config/database.php');
-    
-    //header('Content-Type: application/json');
 
    //La méthode GET est utilisée ici car nous ne pouvions pas utiliser POST (casse)
     $data = $_GET; 

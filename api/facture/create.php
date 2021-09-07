@@ -17,7 +17,7 @@
     $Fac->quantite = $data['quantite'];
     $Fac->id_produit = $data['id_produit'];
     
-    var_dump($data);
+    // var_dump($data);
     
     if($Fac->createFacture()){
         echo 'Facture créé avec succès.';
