@@ -1,4 +1,5 @@
 import 'package:applimobile/page/clientPage.dart';
+import 'package:applimobile/page/collabPage.dart';
 import 'package:applimobile/page/formulaire.dart';
 import 'package:flutter/material.dart';
 import 'dart:html';
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/':(context)=> HomeScreen(),
-          '/clientPage':(context)=> ClientScreen(),
+          '/client':(context)=> ClientScreen(),
+          '/collaborateur':(context)=> CollabScreen(),
           '/formulaire':(context)=> Home(),
         },
       initialRoute: '/',

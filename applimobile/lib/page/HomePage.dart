@@ -1,11 +1,8 @@
 import 'package:applimobile/page/clientPage.dart';
 import 'package:flutter/material.dart';
-import 'package:editable/editable.dart';
-import 'datatableinvoice.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
-
   HomePage createState() => HomePage();
 }
 
@@ -19,11 +16,7 @@ class HomePage extends State<HomeScreen> {
       style: optionStyle,
     ),
     ClientScreen(),
-
-    Text(
-      'Index 3: Settings',
-      style: optionStyle,
-    ),
+    CollabScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -73,11 +66,8 @@ class HomePage extends State<HomeScreen> {
         ],
       ),
       body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
       ),
-
-
-
-
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -90,7 +80,7 @@ class HomePage extends State<HomeScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
-            label: 'School',
+            label: 'Collab.',
           ),
         ],
         currentIndex: _selectedIndex,
