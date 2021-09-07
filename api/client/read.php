@@ -4,7 +4,11 @@
     
     include_once('/wamp64/www/fac2PDF/fact2PDF/class/client.php');
     include_once('/wamp64/www/fac2PDF/fact2PDF/config/database.php');
-
+        // script js et jsquery
+    include('/wamp64/www/fac2PDF/fact2PDF/global/scriptsJS/scriptCommun.html');
+    // structure html css
+    include('/wamp64/www/fac2PDF/fact2PDF/global/header.html');
+   
 
     $database = new Database();
     $db = $database->getConnexion();
@@ -43,4 +47,7 @@
             array("message" => "Aucun enregistrements trouve")
         );
     }
+
+    //footer
+    include('/wamp64/www/fac2PDF/fact2PDF/global/footer.html');
 ?>
