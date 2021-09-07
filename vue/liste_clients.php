@@ -1,11 +1,12 @@
 <?php
-// include_once('/wamp64/www/fac2PDF/fact2PDF/config/database.php');
-// structure html css
-include_once('/wamp64/www/fac2PDf/fact2PDF/global/scriptsJS/scriptCommun.html');
-include_once('/wamp64/www/fac2PDf/fact2PDF/global/header.html');
-include_once('/wamp64/www/fac2PDf/fact2PDF/class/client.php');
-include_once('../config/database.php');
 
+// structure html css
+require_once('/wamp64/www/fac2PDf/fact2PDF/global/scriptsJS/scriptCommun.html');
+include('/wamp64/www/fac2PDf/fact2PDF/global/header.html');
+
+//require_once('../config/database.php');
+
+require_once('/wamp64/www/fac2PDf/fact2PDF/class/client.php');
 ?>
 
 
@@ -24,10 +25,14 @@ include_once('../config/database.php');
      
      <tr>
          <?php
-         $database = new Database();
-         $db = $database->getConnexion();
+         
+    if($Client->getAllClients()){
+        echo "Voici la liste des clients.";
+    } else {
+      echo "probleme visualisation des clients";
+    } 
 
-        echo json_encode();
+       // echo json_encode();
             //blablabla
         ?>
      </tr>

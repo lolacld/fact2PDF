@@ -139,7 +139,7 @@ class Produit {
             $sqlQuery = "DELETE FROM " . $this->db_table . " WHERE id = ?";
             $stmt = $this->conn->prepare($sqlQuery);
         
-            $this->ID=htmlspecialchars(strip_tags($this->ID));
+            $this->id=htmlspecialchars(strip_tags($this->id));
         
             $stmt->bindParam(1, $this->id);
         

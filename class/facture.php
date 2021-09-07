@@ -153,7 +153,7 @@ class Facture {
 
         // DELETE
         function deleteFacture(){
-            $sqlQuery = "DELETE FROM " . $this->db_table . " WHERE id = ?";
+            $sqlQuery = "DELETE FROM factures WHERE id = ?";
             $stmt = $this->conn->prepare($sqlQuery);
         
             $this->ID=htmlspecialchars(strip_tags($this->ID));
