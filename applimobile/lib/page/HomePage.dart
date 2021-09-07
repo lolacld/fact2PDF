@@ -1,4 +1,5 @@
 import 'package:applimobile/page/clientPage.dart';
+import 'package:applimobile/page/collabPage.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -79,7 +80,7 @@ class HomePage extends State<HomeScreen> {
             label: 'Clients',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
+            icon: Icon(Icons.contacts),
             label: 'Collab.',
           ),
         ],
