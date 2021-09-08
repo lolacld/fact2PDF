@@ -34,11 +34,13 @@ class Facture {
 
         /* -------- INSTRUCTIONS PREPAREES --------- */
 
+        // $stmt est une variable qui 
+       
         // GET ALL
         public function getAllFactures(){
             $sql = "SELECT * FROM factures";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute();
+            $stmt = $this->conn->prepare($sql); // on prepare notre requete
+            $stmt->execute(); // on l'execute
             return $stmt;
         }
 
