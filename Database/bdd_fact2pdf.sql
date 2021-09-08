@@ -29,6 +29,7 @@ CREATE TABLE factures
     description Text   NOT NULL,
     TVA         FLOAT  NOT NULL,
     quantite    Int    NOT NULL,
+    date_de_creation Date NOT NULL,
     id_produit  Int,
     id_client   Int,
     CONSTRAINT factures_PK PRIMARY KEY (id),
