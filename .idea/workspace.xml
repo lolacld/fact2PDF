@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df6db5d9-8de9-432f-9a25-3148afcd8798" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/liste_clients.php" beforeDir="false" afterPath="$PROJECT_DIR$/liste_clients.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/liste_factures.php" beforeDir="false" afterPath="$PROJECT_DIR$/liste_factures.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

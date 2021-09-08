@@ -19,7 +19,6 @@ $itemCount = $stmt->fetchAll(PDO::FETCH_ASSOC);
  <table>
    <thead>
      <tr>
-       <th>ID</th>
        <th>montant</th>
        <th>Description de la facture</th>
        <th>TVA</th>
@@ -32,7 +31,6 @@ $itemCount = $stmt->fetchAll(PDO::FETCH_ASSOC);
      $date = $facture['created'];
     ?>
     <tr>
-      <td><?= $facture['ID'] ?></td>
       <td><?= $facture['montant'] ?></td>
       <td><?= $facture['description'] ?></td>
       <td><?= $facture['TVA'] ?></td>
