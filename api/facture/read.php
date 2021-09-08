@@ -1,9 +1,9 @@
 <?php
 
-require_once('/wamp64/www/fac2PDF/fact2PDF/global/header.html');
+require_once('/wamp64/www/fact2PDF/global/header.html');
 
-include_once('/wamp64/www/fac2PDF/fact2PDF/model/factureModel.php');
-include('/wamp64/www/fac2PDF/fact2PDF/model/database.php');
+include_once('/wamp64/www/fact2PDF/model/factureModel.php');
+include('/wamp64/www/fact2PDF/model/database.php');
 
     $facture = new Facture();
 
@@ -24,17 +24,18 @@ include('/wamp64/www/fac2PDF/fact2PDF/model/database.php');
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
             $e = array(
-               // "id" => $id,
+                "id" => $id,
                 "montant" => $montant,
                 "description" => $description,
-               // "tva" => $tva,
+                "tva" => $tva,
                 "quantite" => $quantite,
                 "created" => $created
             );
 
             array_push($facArr["body"], $e);
         }
-        echo json_encode($facArr);
+        echo '<pre>'
+        .json_encode($facArr).'</pre>';
     } else{
         http_response_code(404);
         echo json_encode(

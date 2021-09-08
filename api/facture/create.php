@@ -1,14 +1,10 @@
 <?php
-    require_once('/wamp64/www/fac2PDF/fact2PDF/global/header.html');
+    include('/wamp64/www/fact2PDF/global/header.html');
 
-    include_once('/wamp64/www/fac2PDF/fact2PDF/model/factureModel.php');
-    require_once('/wamp64/www/fac2PDF/fact2PDF/model/database.php');
+    require_once('/wamp64/www/fact2PDF/model/factureModel.php');
+    require_once('/wamp64/www/fact2PDF/model/database.php');
 
-
-    //La méthode GET est utilisée par le navigateur pour demander au serveur de renvoyer une 
-    // certaine ressource. Dans ce cas, le navigateur envoie un corps vide.
-    // Les données envoyées au serveur sont ajoutées à l'URL
-     $data = $_GET; 
+    $data = $_GET; 
     
     // Instanciation Class facture pour manipuler notre objet Facture 
     $Fac = new Facture();

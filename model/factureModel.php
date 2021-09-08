@@ -31,6 +31,9 @@ class Facture {
             $this->conn = $Db->getConnexion();
         }
 
+
+        /* -------- INSTRUCTIONS PREPAREES --------- */
+
         // GET ALL
         public function getAllFactures(){
             $sql = "SELECT * FROM factures";

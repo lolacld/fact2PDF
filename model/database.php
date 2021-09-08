@@ -9,9 +9,10 @@ Nous allons créer des classes de modèle correspondantes qui étendent la
 Databaseclasse.
 */
 
-// Utilisation de l'extension PDO (evite contr einjection SQL et XSS)
+// Utilisation de l'extension PDO pour manipuler notre BDD 
+//(evite contre injection SQL et XSS)
 
-class Database{
+class Database {
 
     // Propriétés de la base de données
     private $host = "localhost";
@@ -26,7 +27,16 @@ class Database{
    $this->conn = null;
     try 
     {
+        // Utilisation de l'extension PDO
         $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->database_name, $this->username, $this->password);
+        
+        // Par defaut PDO les vraies instructions préparées ne sont pas utilisées 
+        // Il faut donc désactiver l'émulation des instructions préparées.  
+        $this->conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
+        // le script ne s'arrêtera pas avec un Fatal Errorlorsque quelque chose ne va pas
+        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
         $this->conn->exec("set names utf8"); // On force les transactions en UTF-8
     } catch(PDOException $exception){
         echo "Pas de connexion possible: " . $exception->getMessage();
