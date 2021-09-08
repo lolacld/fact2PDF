@@ -22,7 +22,6 @@ $itemCount = $stmt->fetchAll(PDO::FETCH_ASSOC);
  <table>
    <thead>
      <tr>
-       <th>ID</th>
        <th>nom</th>
        <th>Adresse email</th>
        <th>Télphone</th>
@@ -33,7 +32,6 @@ $itemCount = $stmt->fetchAll(PDO::FETCH_ASSOC);
    <?php foreach($itemCount as $client){
     ?>
     <tr>
-      <td><?= $client['id'] ?></td>
       <td><?= $client['nom'] ?></td>
       <td><?= $client['email'] ?></td>
       <td><?= $client['telephone'] ?></td>
