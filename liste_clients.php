@@ -12,8 +12,11 @@ $stmt = $client->getAllClients();
 
 $itemCount = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-  ?>
-
+?>
+<html>
+  <head>
+  <link href="/css/style.css">
+  </head>
 <body>
  <h1>Liste des clients</h1>
  <table>

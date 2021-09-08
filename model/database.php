@@ -30,8 +30,11 @@ class Database {
         // Utilisation de l'extension PDO
         $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->database_name, $this->username, $this->password);
         
-        // Par defaut PDO les vraies instructions préparées ne sont pas utilisées 
-        // Il faut donc désactiver l'émulation des instructions préparées.  
+        /* Indique à PDO de désactiver les instructions préparées émulées et d'utiliser 
+        de vraies instructions préparées. 
+        Cela garantit que l'instruction et les valeurs ne sont pas analysées par 
+        PHP avant de l'envoyer au serveur MySQL (donc evite les injections SQL)
+        */
         $this->conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
         // le script ne s'arrêtera pas avec un Fatal Errorlorsque quelque chose ne va pas
